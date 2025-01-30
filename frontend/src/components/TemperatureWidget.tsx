@@ -1,8 +1,12 @@
 import { useSensorData } from "../hooks/useSensorData";
 import { Widget } from "./Widget";
 
-export function TemperatureWidget() {
-  const { data, error } = useSensorData(5000);
+interface TemperatureWidgetProps {
+  interval: number;
+}
+
+export function TemperatureWidget({ interval }: TemperatureWidgetProps) {
+  const { data, error } = useSensorData(interval);
 
   const latestTemperature =
     data.filter((sensor) => sensor.type === "temperature").slice(-1)[0]

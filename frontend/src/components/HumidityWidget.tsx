@@ -9,8 +9,12 @@ import {
   CartesianGrid,
 } from "recharts";
 
-export function HumidityWidget() {
-  const { data, error } = useSensorData(1000);
+interface HumidityWidgetProps {
+  interval: number;
+}
+
+export function HumidityWidget({ interval }: HumidityWidgetProps) {
+  const { data, error } = useSensorData(interval);
 
   // Get timestamp 5 minutes ago
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
@@ -32,7 +36,7 @@ export function HumidityWidget() {
       {error ? (
         <p>Error: {error}</p>
       ) : (
-        <LineChart width={400} height={200} data={humidityData}>
+        <LineChart width={700} height={200} data={humidityData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
           <YAxis domain={[0, 100]} />

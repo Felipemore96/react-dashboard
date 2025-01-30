@@ -1,8 +1,12 @@
 import { useSensorData } from "../hooks/useSensorData";
 import { Widget } from "./Widget";
 
-export function PressureWidget() {
-  const { data, error } = useSensorData(1000);
+interface PressureWidgetProps {
+  interval: number;
+}
+
+export function PressureWidget({ interval }: PressureWidgetProps) {
+  const { data, error } = useSensorData(interval);
 
   // Get timestamp 5 minutes ago
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
@@ -16,7 +20,7 @@ export function PressureWidget() {
     )
     .map((sensor) => sensor.value); // Extract only the values
 
-  // Calculate statistics
+  // Calculate values
   const minPressure = pressureData.length ? Math.min(...pressureData) : "N/A";
   const maxPressure = pressureData.length ? Math.max(...pressureData) : "N/A";
   const avgPressure = pressureData.length
