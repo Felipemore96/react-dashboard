@@ -1,3 +1,10 @@
+import { TemperatureWidget } from "../components/TemperatureWidget";
+
 export function Dashboard() {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      Dashboard:
+      <TemperatureWidget />
+    </div>
+  );
 }
