@@ -1,5 +1,6 @@
 import { TemperatureWidget } from "../components/TemperatureWidget";
 import { HumidityWidget } from "../components/HumidityWidget.tsx";
+import { PressureWidget } from "../components/PressureWidget.tsx";
 
 export function Dashboard() {
   return (
@@ -7,6 +8,7 @@ export function Dashboard() {
       Dashboard:
       <TemperatureWidget />
       <HumidityWidget />
+      <PressureWidget />
     </div>
   );
 }
