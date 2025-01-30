@@ -13,13 +13,13 @@ export const useSensorData = (interval: number = 5000) => {
     // Async because fetch was made as a Promise to mock a real API
     const fetchData = async () => {
       try {
-        const result = await fetchSensorData(); // Await the promise
+        const result = await fetchSensorData(); // Get new data batch
         if (isMounted) {
-          setData(result);
+          setData((prevData) => [...prevData, ...result]); // Append new data
           setError(null);
         }
       } catch (err) {
-        console.error("Error fetching sensor data:", err);
+        console.log(err);
         if (isMounted) setError("Error fetching data");
       }
     };

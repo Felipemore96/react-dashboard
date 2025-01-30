@@ -10,11 +10,7 @@ export function TemperatureWidget() {
 
   return (
     <Widget title="Temperature">
-      {error ? (
-        <p className="text-red-500">Error: {error}</p>
-      ) : (
-        <p className="text-xl font-bold">{latestTemperature}°C</p>
-      )}
+      {error ? <p>Error: {error}</p> : <p>{latestTemperature}°C</p>}
     </Widget>
   );
 }
