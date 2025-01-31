@@ -14,13 +14,15 @@ export function Dashboard() {
   const [interval, setInterval] = useState(1000);
 
   return (
-    <div className={styles.sidePanel}>
-      <SidePanel
-        widgetState={widgetState}
-        setWidgetState={setWidgetState}
-        interval={interval}
-        setInterval={setInterval}
-      />
+    <div className={styles.app}>
+      <div className={styles.sidePanel}>
+        <SidePanel
+          widgetState={widgetState}
+          setWidgetState={setWidgetState}
+          interval={interval}
+          setInterval={setInterval}
+        />
+      </div>
       <div className={styles.widgetGrid}>
         {widgetState.temperature && <TemperatureWidget interval={interval} />}
         <div className="col-span-2">

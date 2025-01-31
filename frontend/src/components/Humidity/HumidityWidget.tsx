@@ -37,7 +37,7 @@ export function HumidityWidget({ interval }: HumidityWidgetProps) {
         {error ? (
           <p>Error: {error}</p>
         ) : (
-          <LineChart width={700} height={200} data={humidityData}>
+          <LineChart width={400} height={150} data={humidityData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time" />
             <YAxis domain={[0, 100]} />

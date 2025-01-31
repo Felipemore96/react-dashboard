@@ -29,7 +29,7 @@ export function SidePanel({
 
   return (
     <aside className={styles.sidepanel}>
-      <h2 className="mb-10">Settings</h2>
+      <h2 className={styles.title}>Settings</h2>
       <div className={styles.settingsLine}>
         <label>Temperature Widget</label>
         <input

@@ -1,14 +1,24 @@
 @import "../../styles/vars.css";
 
-.sidePanel {
+.app {
   display: flex;
+  height: 100vh;
+}
+
+.sidePanel {
+  flex: 0 0 250px;
   height: 100vh;
 }
 
 .widgetGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: auto;
+  gap: 1.5rem;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  flex-grow: 1;
+  padding: 3rem;
 }
