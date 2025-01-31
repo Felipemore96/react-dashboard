@@ -13,16 +13,18 @@ export function Dashboard() {
   const [interval, setInterval] = useState(1000);
 
   return (
-    <>
+    <div className="flex h-screen">
       <SidePanel
         widgetState={widgetState}
         setWidgetState={setWidgetState}
         interval={interval}
         setInterval={setInterval}
       />
-      {widgetState.temperature && <TemperatureWidget interval={interval} />}
-      {widgetState.humidity && <HumidityWidget interval={interval} />}
-      {widgetState.pressure && <PressureWidget interval={interval} />}
-    </>
+      <div>
+        {widgetState.temperature && <TemperatureWidget interval={interval} />}
+        {widgetState.humidity && <HumidityWidget interval={interval} />}
+        {widgetState.pressure && <PressureWidget interval={interval} />}
+      </div>
+    </div>
   );
 }

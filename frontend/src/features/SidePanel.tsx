@@ -28,7 +28,7 @@ export function SidePanel({
   };
 
   return (
-    <div>
+    <aside>
       <h3>Settings</h3>
       <div>
         <label>
@@ -70,6 +70,6 @@ export function SidePanel({
           onChange={(e) => setInterval(Number(e.target.value) * 1000)} // Convert seconds to ms
         />
       </div>
-    </div>
+    </aside>
   );
 }
