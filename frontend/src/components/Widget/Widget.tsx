@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Widget.module.css";
 
 interface WidgetProps {
   title: string;
@@ -7,9 +8,9 @@ interface WidgetProps {
 
 export function Widget({ title, children }: WidgetProps) {
   return (
-    <div>
-      <h2 className="widgetTitle">{title}</h2>
-      <div className="widgetContent">{children}</div>
+    <div className={styles.widget}>
+      <h2 className={styles.widgetTitle}>{title}</h2>
+      <div className={styles.widgetContent}>{children}</div>
     </div>
   );
 }

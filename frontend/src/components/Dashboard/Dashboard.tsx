@@ -3,6 +3,7 @@ import { HumidityWidget } from "../Humidity/HumidityWidget.tsx";
 import { PressureWidget } from "../Pressure/PressureWidget.tsx";
 import { SidePanel } from "../SidePanel/SidePanel.tsx";
 import { useState } from "react";
+import styles from "./Dashboard.module.css";
 
 export function Dashboard() {
   const [widgetState, setWidgetState] = useState({
@@ -20,7 +21,7 @@ export function Dashboard() {
         interval={interval}
         setInterval={setInterval}
       />
-      <div className="widgetGrid">
+      <div className={styles.widgetGrid}>
         {widgetState.temperature && <TemperatureWidget interval={interval} />}
         <div className="col-span-2">
           {widgetState.humidity && <HumidityWidget interval={interval} />}

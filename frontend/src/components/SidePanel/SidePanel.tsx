@@ -1,5 +1,5 @@
-// import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
+import styles from "./SidePanel.module.css";
 
 interface SidePanelProps {
   widgetState: { temperature: boolean; humidity: boolean; pressure: boolean };
@@ -28,7 +28,7 @@ export function SidePanel({
   };
 
   return (
-    <aside className="sidepanel">
+    <aside className={styles.sidepanel}>
       <h3>Settings</h3>
       <div>
         <label>

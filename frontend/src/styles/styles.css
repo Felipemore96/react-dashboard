@@ -21,26 +21,3 @@ h4 {
 h5 {
   font-size: var(--font-lg);
 }
-
-.sidepanel {
-  background-color: var(--color-primary);
-
-  @apply p-3;
-}
-
-.widgetGrid {
-  @apply grid grid-cols-3 grid-rows-2 gap-4 m-12;
-}
-
-.widget {
-  background-color: var(--color-secondary);
-  @apply p-6 m-12 rounded-4xl flex-col items-center;
-}
-
-.widgetTitle {
-  @apply pb-4 text-center;
-}
-
-.widgetContent {
-  @apply items-center;
-}

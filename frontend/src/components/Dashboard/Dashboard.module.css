@@ -1,0 +1,9 @@
+@import "../../styles/vars.css";
+
+.widgetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 3rem;
+}

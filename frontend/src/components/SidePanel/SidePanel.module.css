@@ -1,0 +1,6 @@
+@import "../../styles/vars.css";
+
+.sidepanel {
+  background-color: var(--color-primary);
+  padding: calc(var(--spacing) * 6);
+}
