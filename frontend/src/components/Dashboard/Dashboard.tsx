@@ -14,7 +14,7 @@ export function Dashboard() {
   const [interval, setInterval] = useState(1000);
 
   return (
-    <div className="flex h-screen">
+    <div className={styles.sidePanel}>
       <SidePanel
         widgetState={widgetState}
         setWidgetState={setWidgetState}

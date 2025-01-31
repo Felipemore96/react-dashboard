@@ -4,6 +4,7 @@
 #root {
   max-width: 1280px;
   font-family: "Roboto";
+  color: var(--color-bg);
 }
 
 h2 {

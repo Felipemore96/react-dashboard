@@ -3,4 +3,21 @@
 .sidepanel {
   background-color: var(--color-primary);
   padding: calc(var(--spacing) * 6);
+  width: 30%;
+}
+
+.settingsLine {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.intervalLine {
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
 }

@@ -29,46 +29,44 @@ export function SidePanel({
 
   return (
     <aside className={styles.sidepanel}>
-      <h3>Settings</h3>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={widgetState.temperature}
-            onChange={() => toggleWidget("temperature")}
-          />
-          Temperature Widget
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={widgetState.humidity}
-            onChange={() => toggleWidget("humidity")}
-          />
-          Humidity Widget
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={widgetState.pressure}
-            onChange={() => toggleWidget("pressure")}
-          />
-          Pressure Widget
-        </label>
-      </div>
-      <div>
-        <label>Update Interval (seconds): </label>
+      <h2 className="mb-10">Settings</h2>
+      <div className={styles.settingsLine}>
+        <label>Temperature Widget</label>
         <input
-          type="number"
-          min="1"
-          max="5"
-          value={interval / 1000} // Convert ms to seconds
-          onChange={(e) => setInterval(Number(e.target.value) * 1000)} // Convert seconds to ms
+          type="checkbox"
+          checked={widgetState.temperature}
+          onChange={() => toggleWidget("temperature")}
         />
+      </div>
+      <div className={styles.settingsLine}>
+        <label>Humidity Widget</label>
+        <input
+          type="checkbox"
+          checked={widgetState.humidity}
+          onChange={() => toggleWidget("humidity")}
+        />
+      </div>
+      <div className={styles.settingsLine}>
+        <label>Pressure Widget</label>
+        <input
+          type="checkbox"
+          checked={widgetState.pressure}
+          onChange={() => toggleWidget("pressure")}
+        />
+      </div>
+      <div className={styles.intervalLine}>
+        <label>Real-Time Interval: </label>
+        <div className="flex justify-between">
+          1
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value={interval / 1000}
+            onChange={(e) => setInterval(Number(e.target.value) * 1000)}
+          />
+          5
+        </div>
       </div>
     </aside>
   );
