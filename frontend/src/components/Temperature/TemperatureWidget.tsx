@@ -1,5 +1,5 @@
-import { useSensorData } from "../hooks/useSensorData";
-import { Widget } from "./Widget";
+import { useSensorData } from "../../hooks/useSensorData";
+import { Widget } from "../Widget/Widget";
 import { useState, useEffect } from "react";
 
 interface TemperatureWidgetProps {
@@ -23,13 +23,15 @@ export function TemperatureWidget({ interval }: TemperatureWidgetProps) {
   }, [data]);
 
   return (
-    <Widget title="Temperature">
-      <p>{lastValidTemperature}°C</p>
-      {error && (
-        <p style={{ color: "red", fontSize: "12px" }}>
-          Error retrieving temperature data
-        </p>
-      )}
-    </Widget>
+    <div className="widget">
+      <Widget title="Temperature">
+        <p>{lastValidTemperature}°C</p>
+        {error && (
+          <p style={{ color: "red", fontSize: "12px" }}>
+            Error retrieving temperature data
+          </p>
+        )}
+      </Widget>
+    </div>
   );
 }

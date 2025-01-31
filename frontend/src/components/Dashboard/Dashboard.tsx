@@ -1,7 +1,7 @@
-import { TemperatureWidget } from "../components/TemperatureWidget";
-import { HumidityWidget } from "../components/HumidityWidget.tsx";
-import { PressureWidget } from "../components/PressureWidget.tsx";
-import { SidePanel } from "./SidePanel";
+import { TemperatureWidget } from "../Temperature/TemperatureWidget.tsx";
+import { HumidityWidget } from "../Humidity/HumidityWidget.tsx";
+import { PressureWidget } from "../Pressure/PressureWidget.tsx";
+import { SidePanel } from "../SidePanel/SidePanel.tsx";
 import { useState } from "react";
 
 export function Dashboard() {
@@ -20,10 +20,15 @@ export function Dashboard() {
         interval={interval}
         setInterval={setInterval}
       />
-      <div>
+      <div className="widgetGrid">
         {widgetState.temperature && <TemperatureWidget interval={interval} />}
-        {widgetState.humidity && <HumidityWidget interval={interval} />}
+        <div className="col-span-2">
+          {widgetState.humidity && <HumidityWidget interval={interval} />}
+        </div>
         {widgetState.pressure && <PressureWidget interval={interval} />}
+        <div className="col-span-2">
+          {widgetState.humidity && <HumidityWidget interval={interval} />}
+        </div>
       </div>
     </div>
   );

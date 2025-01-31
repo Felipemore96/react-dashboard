@@ -1,5 +1,5 @@
-import { useSensorData } from "../hooks/useSensorData";
-import { Widget } from "./Widget";
+import { useSensorData } from "../../hooks/useSensorData";
+import { Widget } from "../Widget/Widget";
 import {
   LineChart,
   Line,
@@ -32,18 +32,20 @@ export function HumidityWidget({ interval }: HumidityWidgetProps) {
     }));
 
   return (
-    <Widget title="Humidity">
-      {error ? (
-        <p>Error: {error}</p>
-      ) : (
-        <LineChart width={700} height={200} data={humidityData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="time" />
-          <YAxis domain={[0, 100]} />
-          <Tooltip />
-          <Line type="monotone" dataKey="value" stroke="#8884d8" />
-        </LineChart>
-      )}
-    </Widget>
+    <div className="widget">
+      <Widget title="Humidity">
+        {error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <LineChart width={700} height={200} data={humidityData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="time" />
+            <YAxis domain={[0, 100]} />
+            <Tooltip />
+            <Line type="monotone" dataKey="value" stroke="#8884d8" />
+          </LineChart>
+        )}
+      </Widget>
+    </div>
   );
 }

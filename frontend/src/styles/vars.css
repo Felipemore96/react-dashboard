@@ -1,6 +1,14 @@
 :root {
-  --color-primary: #1d5774;
+  --color-primary: #00536f;
   --color-secondary: #57c0d2;
   --color-opposite: #f19225;
   --color-bg: #ffffff;
+
+  --font-xs: 10px;
+  --font-sm: 12px;
+  --font-base: 14px;
+  --font-lg: 16px;
+  --font-xl: 18px;
+  --font-2xl: 20px;
+  --font-3xl: 22px;
 }

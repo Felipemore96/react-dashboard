@@ -28,7 +28,7 @@ export function SidePanel({
   };
 
   return (
-    <aside>
+    <aside className="sidepanel">
       <h3>Settings</h3>
       <div>
         <label>

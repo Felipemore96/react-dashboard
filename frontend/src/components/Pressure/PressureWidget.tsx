@@ -1,5 +1,5 @@
-import { useSensorData } from "../hooks/useSensorData";
-import { Widget } from "./Widget";
+import { useSensorData } from "../../hooks/useSensorData";
+import { Widget } from "../Widget/Widget";
 
 interface PressureWidgetProps {
   interval: number;
@@ -30,16 +30,18 @@ export function PressureWidget({ interval }: PressureWidgetProps) {
     : "N/A";
 
   return (
-    <Widget title="Pressure">
-      {error ? (
-        <p>Error: {error}</p>
-      ) : (
-        <div>
-          <p>Min: {minPressure} hPa</p>
-          <p>Max: {maxPressure} hPa</p>
-          <p>Avg: {avgPressure} hPa</p>
-        </div>
-      )}
-    </Widget>
+    <div className="widget">
+      <Widget title="Pressure">
+        {error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <div>
+            <p>Min: {minPressure} hPa</p>
+            <p>Max: {maxPressure} hPa</p>
+            <p>Avg: {avgPressure} hPa</p>
+          </div>
+        )}
+      </Widget>
+    </div>
   );
 }

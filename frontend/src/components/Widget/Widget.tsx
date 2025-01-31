@@ -8,8 +8,8 @@ interface WidgetProps {
 export function Widget({ title, children }: WidgetProps) {
   return (
     <div>
-      <h2>{title}</h2>
-      <div>{children}</div>
+      <h2 className="widgetTitle">{title}</h2>
+      <div className="widgetContent">{children}</div>
     </div>
   );
 }
