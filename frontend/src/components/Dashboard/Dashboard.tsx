@@ -1,6 +1,7 @@
 import { TemperatureWidget } from "../Temperature/TemperatureWidget.tsx";
 import { HumidityWidget } from "../Humidity/HumidityWidget.tsx";
 import { PressureWidget } from "../Pressure/PressureWidget.tsx";
+import { CombinedWidget } from "../Combined/CombinedWidget.tsx";
 import { SidePanel } from "../SidePanel/SidePanel.tsx";
 import { useState } from "react";
 import styles from "./Dashboard.module.css";
@@ -10,8 +11,9 @@ export function Dashboard() {
     temperature: true,
     humidity: true,
     pressure: true,
+    combined: true,
   });
-  const [interval, setInterval] = useState(1000);
+  const [interval, setInterval] = useState(5000);
 
   return (
     <div className={styles.app}>
@@ -30,7 +32,7 @@ export function Dashboard() {
         </div>
         {widgetState.pressure && <PressureWidget interval={interval} />}
         <div className="col-span-2">
-          {widgetState.humidity && <HumidityWidget interval={interval} />}
+          {widgetState.combined && <CombinedWidget interval={interval} />}
         </div>
       </div>
     </div>

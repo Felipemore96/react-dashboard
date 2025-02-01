@@ -2,12 +2,18 @@ import { Dispatch, SetStateAction } from "react";
 import styles from "./SidePanel.module.css";
 
 interface SidePanelProps {
-  widgetState: { temperature: boolean; humidity: boolean; pressure: boolean };
+  widgetState: {
+    temperature: boolean;
+    humidity: boolean;
+    pressure: boolean;
+    combined: boolean;
+  };
   setWidgetState: Dispatch<
     SetStateAction<{
       temperature: boolean;
       humidity: boolean;
       pressure: boolean;
+      combined: boolean;
     }>
   >;
   interval: number;
@@ -54,6 +60,14 @@ export function SidePanel({
           onChange={() => toggleWidget("pressure")}
         />
       </div>
+      <div className={styles.settingsLine}>
+        <label>Combined Widget</label>
+        <input
+          type="checkbox"
+          checked={widgetState.combined}
+          onChange={() => toggleWidget("combined")}
+        />
+      </div>
       <div className={styles.intervalLine}>
         <label>Real-Time Interval: </label>
         <div className="flex justify-between">
@@ -61,11 +75,11 @@ export function SidePanel({
           <input
             type="range"
             min="1"
-            max="5"
+            max="9"
             value={interval / 1000}
             onChange={(e) => setInterval(Number(e.target.value) * 1000)}
           />
-          5
+          9
         </div>
       </div>
     </aside>
