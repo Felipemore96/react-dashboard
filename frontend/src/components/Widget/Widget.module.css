@@ -2,7 +2,7 @@
 
 .widget {
   background-color: var(--color-secondary);
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 2rem;
   display: flex;
   flex-direction: column;

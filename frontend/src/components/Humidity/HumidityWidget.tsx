@@ -8,6 +8,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
+import styles from "./HumidityWidget.module.css";
 
 interface HumidityWidgetProps {
   interval: number;
@@ -32,7 +33,7 @@ export function HumidityWidget({ interval }: HumidityWidgetProps) {
     }));
 
   return (
-    <div className="widget">
+    <div className={styles.humidWidget}>
       <Widget title="Humidity">
         {error ? (
           <p>Error: {error}</p>
