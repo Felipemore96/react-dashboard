@@ -1,7 +1,7 @@
 import { useSensorData } from "../../hooks/useSensorData";
 import { Widget } from "../Widget/Widget";
 import { useState, useEffect } from "react";
-import { useNotification } from "../../context/NotificationContext";
+import { useNotification } from "../../hooks/useNotification";
 import styles from "./TemperatureWidget.module.css";
 
 interface TemperatureWidgetProps {

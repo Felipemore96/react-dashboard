@@ -1,4 +1,4 @@
-import { useNotification } from "../../context/NotificationContext";
+import { useNotification } from "../../hooks/useNotification";
 import styles from "./Notification.module.css";
 
 export function Notification() {
