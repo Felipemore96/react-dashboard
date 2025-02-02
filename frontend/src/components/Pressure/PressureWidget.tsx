@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
-import { useSensorData } from "../../hooks/useSensorData";
 import { Widget } from "../Widget/Widget";
+import { useEffect } from "react";
 import { useNotification } from "../../hooks/useNotification";
+import { SensorData } from "../../utils/mockApi";
+// import styles from "./PressureWidget.module.css";
 
 interface PressureWidgetProps {
-  interval: number;
+  data: SensorData[];
 }
 
-export function PressureWidget({ interval }: PressureWidgetProps) {
-  const { data, error } = useSensorData(interval);
+export function PressureWidget({ data }: PressureWidgetProps) {
   const { addNotification } = useNotification();
-  const [errorId, setErrorId] = useState<number | null>(null);
 
   // Get timestamp 5 minutes ago
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
@@ -22,7 +21,7 @@ export function PressureWidget({ interval }: PressureWidgetProps) {
         sensor.type === "pressure" &&
         new Date(sensor.timestamp) > fiveMinutesAgo
     )
-    .map((sensor) => sensor.value); // Extract only the values
+    .map((sensor) => sensor.value);
 
   // Calculate values
   const minPressure = pressureData.length ? Math.min(...pressureData) : "N/A";
@@ -34,15 +33,10 @@ export function PressureWidget({ interval }: PressureWidgetProps) {
     : "N/A";
 
   useEffect(() => {
-    if (error) {
-      // Add notification and store its ID
-      const id = Date.now();
+    if (data.length === 0) {
       addNotification("Error retrieving pressure data");
-      setErrorId(id);
-    } else if (errorId !== null) {
-      setErrorId(null);
     }
-  }, [addNotification, error, errorId]);
+  }, [data, addNotification]);
 
   return (
     <div className="widget">

@@ -69,7 +69,7 @@ export function SidePanel({
         />
       </div>
       <div className={styles.intervalLine}>
-        <label>Real-Time Interval: </label>
+        <label>Real-Time Interval: {interval / 1000} s</label>
         <div className="flex justify-between">
           1
           <input

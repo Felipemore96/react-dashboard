@@ -11,7 +11,7 @@ interface NotificationContextType {
   removeNotification: (id: string) => void;
 }
 
-// context to share globally in the app, across all components
+// context to manage notifications globally in the app, across all components
 export const NotificationContext = createContext<
   NotificationContextType | undefined
 >(undefined);

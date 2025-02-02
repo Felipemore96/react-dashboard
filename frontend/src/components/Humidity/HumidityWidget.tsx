@@ -1,4 +1,3 @@
-import { useSensorData } from "../../hooks/useSensorData";
 import { Widget } from "../Widget/Widget";
 import {
   LineChart,
@@ -7,20 +6,18 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-  ResponsiveContainer,
 } from "recharts";
 import styles from "./HumidityWidget.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNotification } from "../../hooks/useNotification";
+import { SensorData } from "../../utils/mockApi";
 
 interface HumidityWidgetProps {
-  interval: number;
+  data: SensorData[];
 }
 
-export function HumidityWidget({ interval }: HumidityWidgetProps) {
-  const { data, error } = useSensorData(interval);
+export function HumidityWidget({ data }: HumidityWidgetProps) {
   const { addNotification } = useNotification();
-  const [errorId, setErrorId] = useState<number | null>(null);
 
   // Get timestamp 5 minutes ago
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
@@ -33,27 +30,18 @@ export function HumidityWidget({ interval }: HumidityWidgetProps) {
         new Date(sensor.timestamp) > fiveMinutesAgo
     )
     .map((sensor) => ({
-      time: new Date(sensor.timestamp).toLocaleTimeString(), // Format time for the X-axis
-      value: sensor.value, // Humidity value
+      time: new Date(sensor.timestamp).toLocaleTimeString(),
+      value: sensor.value,
     }));
 
   useEffect(() => {
-    if (error) {
-      // Add notification and store its ID
-      const id = Date.now();
+    if (data.length === 0) {
       addNotification("Error retrieving humidity data");
-      setErrorId(id);
-    } else if (errorId !== null) {
-      setErrorId(null);
     }
-  }, [addNotification, error, errorId]);
+  }, [data, addNotification]);
 
   return (
-    <ResponsiveContainer
-      width="100%"
-      height="100%"
-      className={styles.humidWidget}
-    >
+    <div className={styles.humidWidget}>
       <Widget title="Humidity">
         <LineChart width={400} height={150} data={humidityData}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -63,6 +51,6 @@ export function HumidityWidget({ interval }: HumidityWidgetProps) {
           <Line type="monotone" dataKey="value" stroke="#8884d8" />
         </LineChart>
       </Widget>
-    </ResponsiveContainer>
+    </div>
   );
 }

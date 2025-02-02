@@ -3,17 +3,35 @@ import { HumidityWidget } from "../Humidity/HumidityWidget.tsx";
 import { PressureWidget } from "../Pressure/PressureWidget.tsx";
 import { CombinedWidget } from "../Combined/CombinedWidget.tsx";
 import { SidePanel } from "../SidePanel/SidePanel.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNotification } from "../../hooks/useNotification";
 import styles from "./Dashboard.module.css";
+import { useSensorData } from "../../hooks/useSensorData.tsx";
+
+type WidgetState = {
+  temperature: boolean;
+  humidity: boolean;
+  pressure: boolean;
+  combined: boolean;
+};
 
 export function Dashboard() {
-  const [widgetState, setWidgetState] = useState({
+  const [widgetState, setWidgetState] = useState<WidgetState>({
     temperature: true,
     humidity: true,
     pressure: true,
     combined: true,
   });
   const [interval, setInterval] = useState(5000);
+
+  const { data, error } = useSensorData(interval);
+  const { addNotification } = useNotification();
+
+  useEffect(() => {
+    if (error) {
+      addNotification("Error retrieving sensor data");
+    }
+  }, [error, addNotification]);
 
   return (
     <div className={styles.app}>
@@ -26,14 +44,18 @@ export function Dashboard() {
         />
       </div>
       <div className={styles.widgetGrid}>
-        {widgetState.temperature && <TemperatureWidget interval={interval} />}
-        <div className="col-span-2">
-          {widgetState.humidity && <HumidityWidget interval={interval} />}
-        </div>
-        {widgetState.pressure && <PressureWidget interval={interval} />}
-        <div className="col-span-2">
-          {widgetState.combined && <CombinedWidget interval={interval} />}
-        </div>
+        {widgetState.temperature && <TemperatureWidget data={data} />}
+        {widgetState.humidity && (
+          <div className="col-span-2">
+            <HumidityWidget data={data} />
+          </div>
+        )}
+        {widgetState.pressure && <PressureWidget data={data} />}
+        {widgetState.combined && (
+          <div className="col-span-2">
+            <CombinedWidget data={data} />
+          </div>
+        )}
       </div>
     </div>
   );
