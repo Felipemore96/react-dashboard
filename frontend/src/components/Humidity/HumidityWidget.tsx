@@ -7,6 +7,7 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
+  ResponsiveContainer,
 } from "recharts";
 import styles from "./HumidityWidget.module.css";
 import { useEffect, useState } from "react";
@@ -48,7 +49,11 @@ export function HumidityWidget({ interval }: HumidityWidgetProps) {
   }, [addNotification, error, errorId]);
 
   return (
-    <div className={styles.humidWidget}>
+    <ResponsiveContainer
+      width="100%"
+      height="100%"
+      className={styles.humidWidget}
+    >
       <Widget title="Humidity">
         <LineChart width={400} height={150} data={humidityData}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -58,6 +63,6 @@ export function HumidityWidget({ interval }: HumidityWidgetProps) {
           <Line type="monotone" dataKey="value" stroke="#8884d8" />
         </LineChart>
       </Widget>
-    </div>
+    </ResponsiveContainer>
   );
 }

@@ -1,8 +1,9 @@
 import { useState, ReactNode } from "react";
 import { NotificationContext } from "./NotificationContext";
+import { v4 as uuidv4 } from "uuid";
 
 interface Notification {
-  id: number;
+  id: string;
   message: string;
 }
 
@@ -16,7 +17,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
       if (prev.some((n) => n.message === message)) {
         return prev; // Avoid duplicates
       }
-      const id = Date.now();
+      const id = uuidv4();
       const newNotifications = [...prev, { id, message }];
 
       // Automatically remove after 4 seconds
@@ -28,7 +29,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const removeNotification = (id: number) => {
+  const removeNotification = (id: string) => {
     setNotifications((current) => current.filter((n) => n.id !== id));
   };
 

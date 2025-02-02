@@ -1,14 +1,14 @@
 import { createContext } from "react";
 
 interface Notification {
-  id: number;
+  id: string;
   message: string;
 }
 
 interface NotificationContextType {
   notifications: Notification[];
   addNotification: (message: string) => void;
-  removeNotification: (id: number) => void;
+  removeNotification: (id: string) => void;
 }
 
 // context to share globally in the app, across all components
