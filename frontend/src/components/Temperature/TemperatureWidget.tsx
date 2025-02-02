@@ -2,6 +2,7 @@ import { Widget } from "../Widget/Widget";
 import { useEffect, useState } from "react";
 import styles from "./TemperatureWidget.module.css";
 import { SensorData } from "../../utils/mockApi";
+import { useNotification } from "../../hooks/useNotification";
 
 interface TemperatureWidgetProps {
   data: SensorData[];
@@ -11,6 +12,7 @@ export function TemperatureWidget({ data }: TemperatureWidgetProps) {
   const [lastValidTemperature, setLastValidTemperature] = useState<
     string | number
   >("N/A");
+  const { addNotification } = useNotification();
 
   useEffect(() => {
     const latestTemperature = data
@@ -19,8 +21,11 @@ export function TemperatureWidget({ data }: TemperatureWidgetProps) {
 
     if (latestTemperature !== undefined) {
       setLastValidTemperature(latestTemperature);
+    } else if (data.length > 0) {
+      // Only show an error if data exists but no temperature data is found
+      addNotification("No temperature data available");
     }
-  }, [data]);
+  }, [data, addNotification]);
 
   return (
     <div className={styles.tempWidget}>

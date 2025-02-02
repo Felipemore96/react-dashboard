@@ -35,10 +35,10 @@ export function HumidityWidget({ data }: HumidityWidgetProps) {
     }));
 
   useEffect(() => {
-    if (data.length === 0) {
+    if (data.length > 0 && humidityData.length === 0) {
       addNotification("Error retrieving humidity data");
     }
-  }, [data, addNotification]);
+  }, [data, addNotification, humidityData.length]);
 
   return (
     <div className={styles.humidWidget}>

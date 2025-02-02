@@ -73,10 +73,10 @@ export function CombinedWidget({ data }: CombinedWidgetProps) {
   const result = Object.values(combinedData);
 
   useEffect(() => {
-    if (data.length === 0) {
+    if (data.length > 0 && result.length === 0) {
       addNotification("Error retrieving combined data");
     }
-  }, [data, addNotification]);
+  }, [data, addNotification, result.length]);
 
   return (
     <div className={styles.humidWidget}>
