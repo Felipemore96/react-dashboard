@@ -6,11 +6,13 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
+  ResponsiveContainer,
 } from "recharts";
 import styles from "./HumidityWidget.module.css";
 import { useEffect } from "react";
 import { useNotification } from "../../hooks/useNotification";
 import { SensorData } from "../../utils/mockApi";
+import { COLORS } from "../../constants";
 
 interface HumidityWidgetProps {
   data: SensorData[];
@@ -41,16 +43,31 @@ export function HumidityWidget({ data }: HumidityWidgetProps) {
   }, [data, addNotification, humidityData.length]);
 
   return (
-    <div className={styles.humidWidget}>
-      <Widget title="Humidity" size="large">
-        <LineChart width={400} height={150} data={humidityData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="time" />
-          <YAxis domain={[0, 100]} />
-          <Tooltip />
-          <Line type="monotone" dataKey="value" stroke="#8884d8" />
-        </LineChart>
-      </Widget>
-    </div>
+    <Widget title="Humidity" size="large">
+      <div className={styles.chartContainer}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={humidityData}>
+            <CartesianGrid strokeDasharray="3 3" stroke={COLORS.bg} />
+            <XAxis dataKey="time" tick={{ fill: COLORS.bg }} />
+            <YAxis domain={[0, 100]} tick={{ fill: COLORS.bg }} />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: COLORS.bg,
+                borderColor: COLORS.secondary,
+                borderRadius: "8px",
+                color: COLORS.primary,
+              }}
+            />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke={COLORS.opposite}
+              strokeWidth={2}
+              dot={{ fill: COLORS.opposite, r: 4 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </Widget>
   );
 }

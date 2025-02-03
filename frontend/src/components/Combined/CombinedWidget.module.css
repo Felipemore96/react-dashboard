@@ -1,6 +1,7 @@
 @import "../../styles/vars.css";
 
-.humidWidget {
+.chartContainer {
   width: 100%;
   height: 100%;
+  padding-right: 1.2rem;
 }
