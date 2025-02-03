@@ -32,11 +32,12 @@ export function PressureWidget({ data }: PressureWidgetProps) {
       ).toFixed(2)
     : "N/A";
 
+  // Show error notification if no pressure data is available
   useEffect(() => {
-    if (data.length === 0) {
+    if (data.length > 0 && pressureData.length === 0) {
       addNotification("Error retrieving pressure data");
     }
-  }, [data, addNotification]);
+  }, [data, pressureData, addNotification]);
 
   return (
     <div className="widget">
