@@ -21,3 +21,21 @@ h4 {
 h5 {
   font-size: var(--font-lg);
 }
+
+@media (min-width: 1550px) {
+  h2 {
+    font-size: var(--font-5xl);
+  }
+
+  h3 {
+    font-size: var(--font-4xl);
+  }
+
+  h4 {
+    font-size: var(--font-3xl);
+  }
+
+  h5 {
+    font-size: var(--font-2xl);
+  }
+}
