@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchSensorData, SensorData } from "../utils/mockApi";
 
 // Custom hook to fetch sensor data at a specified interval
-// the interval (in milliseconds) at which to fetch data
-// returns An object containing the fetched data and any error that occurred
+// interval (in milliseconds) at which to fetch data
+// returns An object containing the fetched data and errors
 export const useSensorData = (interval: number = 5000) => {
   const [data, setData] = useState<SensorData[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +14,7 @@ export const useSensorData = (interval: number = 5000) => {
         const result = await fetchSensorData();
         setData((prevData) => {
           const newData = [...prevData, ...result];
-          return newData.slice(-100); // Keep only the last 100 data points
+          return newData.slice(-500); // Keep only the last 500 data points
         });
         setError(null);
       } catch (err) {
