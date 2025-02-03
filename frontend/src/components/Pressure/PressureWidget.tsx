@@ -41,7 +41,7 @@ export function PressureWidget({ data }: PressureWidgetProps) {
 
   return (
     <div className="widget">
-      <Widget title="Pressure">
+      <Widget title="Pressure" size="small">
         <div>
           <p>Min: {minPressure} hPa</p>
           <p>Max: {maxPressure} hPa</p>

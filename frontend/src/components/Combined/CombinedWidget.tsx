@@ -80,7 +80,7 @@ export function CombinedWidget({ data }: CombinedWidgetProps) {
 
   return (
     <div className={styles.humidWidget}>
-      <Widget title="Temperature & Humidity">
+      <Widget title="Temperature & Humidity" size="large">
         <LineChart width={400} height={150} data={result}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />

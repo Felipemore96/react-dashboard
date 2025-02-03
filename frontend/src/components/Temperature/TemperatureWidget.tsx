@@ -29,7 +29,7 @@ export function TemperatureWidget({ data }: TemperatureWidgetProps) {
 
   return (
     <div className={styles.tempWidget}>
-      <Widget title="Temperature">
+      <Widget title="Temperature" size="small">
         <p>{lastValidTemperature}°C</p>
       </Widget>
     </div>

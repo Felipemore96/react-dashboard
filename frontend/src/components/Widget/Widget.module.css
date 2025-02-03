@@ -20,3 +20,11 @@
 .widgetContent {
   align-items: center;
 }
+
+.widget.small {
+  aspect-ratio: 1 / 1;
+}
+
+.widget.large {
+  aspect-ratio: 2 / 1;
+}

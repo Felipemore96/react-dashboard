@@ -42,7 +42,7 @@ export function HumidityWidget({ data }: HumidityWidgetProps) {
 
   return (
     <div className={styles.humidWidget}>
-      <Widget title="Humidity">
+      <Widget title="Humidity" size="large">
         <LineChart width={400} height={150} data={humidityData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
