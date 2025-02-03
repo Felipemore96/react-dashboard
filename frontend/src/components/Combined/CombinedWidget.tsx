@@ -31,10 +31,8 @@ export function CombinedWidget({ data }: CombinedWidgetProps) {
     humidity: true,
   });
 
-  // Get timestamp 5 minutes ago
+  // Get last 5 minutes of data
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
-
-  // Get last 5 minutes of humidity data
   const humidityData = data
     .filter(
       (sensor) =>
@@ -59,7 +57,7 @@ export function CombinedWidget({ data }: CombinedWidgetProps) {
 
   const combinedData: Record<string, CombinedData> = {};
 
-  // Add humidity data to the combinedData object
+  // add humidity data to combinedData
   humidityData.forEach((entry) => {
     if (!combinedData[entry.time]) {
       combinedData[entry.time] = { time: entry.time };
@@ -67,7 +65,7 @@ export function CombinedWidget({ data }: CombinedWidgetProps) {
     combinedData[entry.time].humidity = entry.humidity;
   });
 
-  // Add temperature data to the combinedData object
+  // add temperature data to combinedData
   temperatureData.forEach((entry) => {
     if (!combinedData[entry.time]) {
       combinedData[entry.time] = { time: entry.time };
@@ -75,7 +73,7 @@ export function CombinedWidget({ data }: CombinedWidgetProps) {
     combinedData[entry.time].temperature = entry.temperature;
   });
 
-  // Convert the combinedData object back to an array
+  // convert combinedData back to an array
   const result = Object.values(combinedData);
 
   useEffect(() => {
