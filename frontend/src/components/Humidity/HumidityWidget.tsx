@@ -44,15 +44,16 @@ export function HumidityWidget({ data }: HumidityWidgetProps) {
   return (
     <Widget title="Humidity" size="large">
       <div className={styles.chartContainer}>
-        <select
-          value={timeRange}
-          onChange={(e) => setTimeRange(Number(e.target.value))}
-          className={styles.rangeSelector}
-        >
-          <option value={1}>Last 1 min</option>
-          <option value={5}>Last 5 min</option>
-          <option value={10}>Last 10 min</option>
-        </select>
+        <div className={styles.rangeSelector}>
+          <select
+            value={timeRange}
+            onChange={(e) => setTimeRange(Number(e.target.value))}
+          >
+            <option value={1}>Last 1 min</option>
+            <option value={5}>Last 5 min</option>
+            <option value={10}>Last 10 min</option>
+          </select>
+        </div>
         <div className={styles.chartContainer}>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={humidityData}>

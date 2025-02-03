@@ -4,12 +4,12 @@
   --color-opposite: #f19225;
   --color-bg: #ffffff;
 
-  --font-xs: 0.02px;
-  --font-sm: 0.05px;
-  --font-base: 0.1rem;
-  --font-lg: 0.3rem;
-  --font-xl: 0.5rem;
-  --font-2xl: 1rem;
+  --font-xs: 0.1rem;
+  --font-sm: 0.3rem;
+  --font-base: 0.5rem;
+  --font-lg: 0.75rem;
+  --font-xl: 1rem;
+  --font-2xl: 1.25rem;
   --font-3xl: 1.5rem;
   --font-4xl: 2rem;
   --font-5xl: 2.5rem;
