@@ -1,1 +1,23 @@
 @import "../../styles/vars.css";
+
+.presContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.presLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.presText {
+  font-size: 1.5rem;
+  vertical-align: super;
+  padding-left: 0.7rem;
+}
+
+.presValue {
+  display: flex;
+  align-items: baseline;
+}

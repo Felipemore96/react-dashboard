@@ -2,7 +2,7 @@ import { Widget } from "../Widget/Widget";
 import { useEffect } from "react";
 import { useNotification } from "../../hooks/useNotification";
 import { SensorData } from "../../utils/mockApi";
-// import styles from "./PressureWidget.module.css";
+import styles from "./PressureWidget.module.css";
 
 interface PressureWidgetProps {
   data: SensorData[];
@@ -29,7 +29,7 @@ export function PressureWidget({ data }: PressureWidgetProps) {
   const avgPressure = pressureData.length
     ? (
         pressureData.reduce((sum, val) => sum + val, 0) / pressureData.length
-      ).toFixed(2)
+      ).toFixed(0)
     : "N/A";
 
   // Show error notification if no pressure data is available
@@ -39,15 +39,23 @@ export function PressureWidget({ data }: PressureWidgetProps) {
     }
   }, [data, pressureData, addNotification]);
 
-  return (
-    <div className="widget">
-      <Widget title="Pressure" size="small">
-        <div>
-          <p>Min: {minPressure} hPa</p>
-          <p>Max: {maxPressure} hPa</p>
-          <p>Avg: {avgPressure} hPa</p>
-        </div>
-      </Widget>
+  const renderPressureLine = (label: string, value: string | number) => (
+    <div className={styles.presLine}>
+      <p>{label}&nbsp;</p>
+      <div className={styles.presValue}>
+        <div className={styles.presText}>{value}</div>
+        <p>&nbsp;hPa</p>
+      </div>
     </div>
+  );
+
+  return (
+    <Widget title="Pressure" size="small">
+      <div className={styles.presContainer}>
+        {renderPressureLine("Minimum", minPressure)}
+        {renderPressureLine("Maximum", maxPressure)}
+        {renderPressureLine("Average", avgPressure)}
+      </div>
+    </Widget>
   );
 }

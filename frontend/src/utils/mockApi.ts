@@ -20,7 +20,7 @@ const generateSensorDataPoint = (type: SensorType, id: number): SensorData => {
   return {
     id,
     type,
-    value: parseFloat((Math.random() * (max - min) + min).toFixed(2)),
+    value: parseFloat((Math.random() * (max - min) + min).toFixed(0)),
     timestamp: new Date().toISOString(),
   };
 };
