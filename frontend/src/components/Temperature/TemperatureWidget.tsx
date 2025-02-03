@@ -28,10 +28,11 @@ export function TemperatureWidget({ data }: TemperatureWidgetProps) {
   }, [data, addNotification]);
 
   return (
-    <div className={styles.tempWidget}>
-      <Widget title="Temperature" size="small">
-        <p>{lastValidTemperature}°C</p>
-      </Widget>
-    </div>
+    <Widget title="Temperature" size="small">
+      <div className={styles.tempContainer}>
+        <p className={styles.tempText}>{lastValidTemperature}</p>
+        <p className={styles.tempDegrees}>&nbsp;°C</p>
+      </div>
+    </Widget>
   );
 }

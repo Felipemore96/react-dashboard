@@ -37,7 +37,7 @@ export function SidePanel({
     <aside className={styles.sidepanel}>
       <h2 className={styles.title}>Settings</h2>
       <div className={styles.settingsLine}>
-        <label>Temperature Widget</label>
+        <label>Temperature</label>
         <input
           type="checkbox"
           checked={widgetState.temperature}
@@ -45,7 +45,7 @@ export function SidePanel({
         />
       </div>
       <div className={styles.settingsLine}>
-        <label>Humidity Widget</label>
+        <label>Humidity</label>
         <input
           type="checkbox"
           checked={widgetState.humidity}
@@ -53,7 +53,7 @@ export function SidePanel({
         />
       </div>
       <div className={styles.settingsLine}>
-        <label>Pressure Widget</label>
+        <label>Pressure</label>
         <input
           type="checkbox"
           checked={widgetState.pressure}
@@ -61,7 +61,7 @@ export function SidePanel({
         />
       </div>
       <div className={styles.settingsLine}>
-        <label>Combined Widget</label>
+        <label>Combined</label>
         <input
           type="checkbox"
           checked={widgetState.combined}
