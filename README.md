@@ -51,6 +51,62 @@ Open in your browser:
 - Recharts: For creating responsive and interactive graphs.
 - CSS Modules: For scoped and maintainable styling.
 
+### Code Highlights
+
+**Mock API**
+Simulates real-time data with a 10% chance of errors:
+
+  ```bash
+  export const fetchSensorData = async (): Promise<SensorData[]> => {
+    if (Math.random() < ERROR_CHANCE) {
+      throw new Error("Failed to fetch sensor data");
+    }
+    return generateSensorData();
+  };
+  ```
+
+**Custom Hook**
+Fetches and manages sensor data:
+
+  ```bash
+  export const useSensorData = (interval: number = 5000) => {
+    const [data, setData] = useState<SensorData[]>([]);
+    const [error, setError] = useState<string | null>(null);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const result = await fetchSensorData();
+          setData((prevData) => [...prevData, ...result].slice(-100));
+          setError(null);
+        } catch (err) {
+          setError("Failed to fetch sensor data. Please try again later.");
+        }
+      };
+  
+      fetchData();
+      const intervalId = setInterval(fetchData, interval);
+      return () => clearInterval(intervalId);
+    }, [interval]);
+  
+    return { data, error };
+  };
+  ```
+
+**Reusable Widget Component**
+Supports small and large sizes:
+
+  ```bash
+  export function Widget({ title, children, size = "small" }: WidgetProps) {
+    return (
+      <div className={`${styles.widget} ${styles[size]}`}>
+        <h2>{title}</h2>
+        <div>{children}</div>
+      </div>
+    );
+  }
+  ```
+
 ### Conclusion
 
 This project showcases my ability to build a professional, responsive, and user-friendly dashboard using modern web technologies. It highlights my skills in React, TypeScript, and data visualization, as well as my attention to detail and commitment to clean, maintainable code.
