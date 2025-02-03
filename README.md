@@ -54,6 +54,7 @@ Open in your browser:
 ### Code Highlights
 
 **Mock API**
+
 Simulates real-time data with a 10% chance of errors:
 
   ```bash
@@ -66,6 +67,7 @@ Simulates real-time data with a 10% chance of errors:
   ```
 
 **Custom Hook**
+
 Fetches and manages sensor data:
 
   ```bash
@@ -94,6 +96,7 @@ Fetches and manages sensor data:
   ```
 
 **Reusable Widget Component**
+
 Supports small and large sizes:
 
   ```bash
