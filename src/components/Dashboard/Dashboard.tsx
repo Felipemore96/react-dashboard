@@ -5,8 +5,8 @@ import { CombinedWidget } from "../Combined/CombinedWidget.tsx";
 import { SidePanel } from "../SidePanel/SidePanel.tsx";
 import { useEffect, useState } from "react";
 import { useNotification } from "../../hooks/useNotification";
-import styles from "./Dashboard.module.css";
 import { useSensorData } from "../../hooks/useSensorData.tsx";
+import styles from "./Dashboard.module.css";
 
 type WidgetState = {
   temperature: boolean;
@@ -46,13 +46,13 @@ export function Dashboard() {
       <div className={styles.widgetGrid}>
         {widgetState.temperature && <TemperatureWidget data={data} />}
         {widgetState.humidity && (
-          <div className="col-span-2">
+          <div className={styles.doubleContainer}>
             <HumidityWidget data={data} />
           </div>
         )}
         {widgetState.pressure && <PressureWidget data={data} />}
         {widgetState.combined && (
-          <div className="col-span-2">
+          <div className={styles.doubleContainer}>
             <CombinedWidget data={data} />
           </div>
         )}

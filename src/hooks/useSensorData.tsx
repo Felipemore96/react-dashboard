@@ -23,10 +23,10 @@ export const useSensorData = (interval: number = 5000) => {
       }
     };
 
-    fetchData(); // Initial fetch
+    fetchData(); // initial fetch
     const intervalId = setInterval(fetchData, interval);
 
-    // Cleanup function
+    // cleanup function
     return () => {
       clearInterval(intervalId);
     };

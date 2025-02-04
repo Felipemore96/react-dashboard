@@ -31,7 +31,7 @@ export function CombinedWidget({ data }: CombinedWidgetProps) {
     humidity: true,
   });
 
-  // Get last 5 minutes of data
+  // get last 5 minutes of data
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
   const humidityData = data
     .filter(

@@ -11,10 +11,8 @@ interface PressureWidgetProps {
 export function PressureWidget({ data }: PressureWidgetProps) {
   const { addNotification } = useNotification();
 
-  // Get timestamp 5 minutes ago
+  // get last 5 minutes of pressure data
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
-
-  // Get last 5 minutes of pressure data
   const pressureData = data
     .filter(
       (sensor) =>
@@ -23,7 +21,7 @@ export function PressureWidget({ data }: PressureWidgetProps) {
     )
     .map((sensor) => sensor.value);
 
-  // Calculate values
+  // calculate values
   const minPressure = pressureData.length ? Math.min(...pressureData) : "N/A";
   const maxPressure = pressureData.length ? Math.max(...pressureData) : "N/A";
   const avgPressure = pressureData.length
@@ -32,7 +30,7 @@ export function PressureWidget({ data }: PressureWidgetProps) {
       ).toFixed(0)
     : "N/A";
 
-  // Show error notification if no pressure data is available
+  // error notification if no pressure data is available
   useEffect(() => {
     if (data.length > 0 && pressureData.length === 0) {
       addNotification("Error retrieving pressure data");

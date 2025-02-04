@@ -22,7 +22,7 @@ export function HumidityWidget({ data }: HumidityWidgetProps) {
   const { addNotification } = useNotification();
   const [timeRange, setTimeRange] = useState(5);
 
-  // Get last X minutes of humidity data
+  // get last X minutes of humidity data
   const timeThreshold = new Date(Date.now() - timeRange * 60 * 1000);
 
   const humidityData = data

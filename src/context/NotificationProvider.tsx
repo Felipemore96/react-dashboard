@@ -12,31 +12,31 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const timeoutIds = useRef<NodeJS.Timeout[]>([]);
 
-  // Cleanup timeouts on unmount
+  // cleanup timeouts on unmount
   useEffect(() => {
-    const currentTimeoutIds = timeoutIds.current; // Store the current value in a variable
+    const currentTimeoutIds = timeoutIds.current; // store the current value in a variable
 
     return () => {
-      currentTimeoutIds.forEach(clearTimeout); // Use the variable in the cleanup function
+      currentTimeoutIds.forEach(clearTimeout); // use the variable in the cleanup function
     };
   }, []);
 
-  // Adds a new notification and schedules its removal after 4 seconds
+  // adds a new notification and schedules its removal after 4 seconds
   const addNotification = (message: string) => {
     setNotifications((prev) => {
-      // Check if a notification with the same message already exists
+      // check if a notification with the same message already exists
       if (prev.some((n) => n.message === message)) {
         return prev; // Avoid duplicates
       }
       const id = uuidv4();
       const newNotification = { id, message };
 
-      // Schedule removal after 4 seconds
+      // schedule removal after 4 seconds
       const timeoutId = setTimeout(() => {
         setNotifications((current) => current.filter((n) => n.id !== id));
       }, 4000);
 
-      // Store timeout ID for cleanup
+      // store timeout ID for cleanup
       timeoutIds.current.push(timeoutId);
 
       return [...prev, newNotification];

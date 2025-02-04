@@ -22,7 +22,8 @@ export function TemperatureWidget({ data }: TemperatureWidgetProps) {
     if (latestTemperature !== undefined) {
       setLastValidTemperature(latestTemperature);
     } else if (data.length > 0) {
-      // Only show an error if data exists but no temperature data is found
+      // error if data exists but no temperature data is found
+      // mainly there for initial load
       addNotification("No temperature data available");
     }
   }, [data, addNotification]);

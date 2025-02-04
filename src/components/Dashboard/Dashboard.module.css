@@ -29,6 +29,10 @@
   margin-bottom: 2rem;
 }
 
+.doubleContainer {
+  grid-column: span 2 / span 2;
+}
+
 @media (max-width: 1050px) {
   .widgetGrid {
     grid-template-columns: repeat(2, 1fr);
