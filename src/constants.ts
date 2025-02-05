@@ -1,6 +1,8 @@
+const rootStyles = getComputedStyle(document.documentElement);
+
 export const COLORS = {
-  primary: "#00536f",
-  secondary: "#57c0d2",
-  opposite: "#f19225",
-  bg: "#ffffff",
+  primary: rootStyles.getPropertyValue("--color-primary").trim(),
+  secondary: rootStyles.getPropertyValue("--color-secondary").trim(),
+  opposite: rootStyles.getPropertyValue("--color-opposite").trim(),
+  bg: rootStyles.getPropertyValue("--color-bg").trim(),
 };
