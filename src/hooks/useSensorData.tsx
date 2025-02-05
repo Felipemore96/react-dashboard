@@ -18,8 +18,8 @@ export const useSensorData = (interval: number = 5000) => {
         });
         setError(null);
       } catch (err) {
-        console.error("Error fetching sensor data:", err);
-        setError("Failed to fetch sensor data. Please try again later.");
+        console.error("Intentional Simulated Error:", err);
+        setError("Failed to fetch sensor data.");
       }
     };
 

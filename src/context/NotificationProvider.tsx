@@ -25,11 +25,12 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   const addNotification = (message: string) => {
     setNotifications((prev) => {
       // check if a notification with the same message already exists
-      if (prev.some((n) => n.message === message)) {
-        return prev; // Avoid duplicates
-      }
       const id = uuidv4();
       const newNotification = { id, message };
+
+      if (prev.some((n) => n.id === newNotification.id)) {
+        return prev; // Avoid duplicates
+      }
 
       // schedule removal after 4 seconds
       const timeoutId = setTimeout(() => {

@@ -31,7 +31,8 @@ export function Dashboard() {
     if (error) {
       addNotification("Error retrieving sensor data");
     }
-  }, [error, addNotification]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
 
   return (
     <div className={styles.app}>
