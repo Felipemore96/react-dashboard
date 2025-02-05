@@ -12,7 +12,7 @@ import styles from "./CombinedWidget.module.css";
 import { useEffect, useState } from "react";
 import { useNotification } from "../../hooks/useNotification";
 import { SensorData } from "../../utils/mockApi";
-import { COLORS } from "../../constants";
+import { COLORS } from "../../utils/constants";
 
 interface CombinedData {
   time: string;

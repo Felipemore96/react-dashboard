@@ -12,7 +12,7 @@ import styles from "./HumidityWidget.module.css";
 import { useState, useEffect } from "react";
 import { useNotification } from "../../hooks/useNotification";
 import { SensorData } from "../../utils/mockApi";
-import { COLORS } from "../../constants";
+import { COLORS } from "../../utils/constants";
 
 interface HumidityWidgetProps {
   data: SensorData[];
